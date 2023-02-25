@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Firebase Realtime Database Demo</title>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-database.js"></script>
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyBCr4jJyHOwNuQ4GBpKXRRx5RQ7uT4haSc",
+        authDomain: "mydb-7a16c.firebaseapp.com",
+        databaseURL:
+          "https://mydb-7a16c-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "mydb-7a16c",
+        storageBucket: "mydb-7a16c.appspot.com",
+        messagingSenderId: "60788192817",
+        appId: "1:60788192817:web:2763fc363e527a6c950710",
+        measurementId: "G-PLYL07FR1J",
+      };
+
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      var database = firebase.database();
+
+      function readFromDatabase() {
+        var key = document.getElementById("key").value;
+
+        if (key === "") alert("You must provide a key.");
+        else {
+          database
+            .ref(key)
+            .once("value")
+            .then(function (snapshot) {
+              var value = snapshot.val();
+              document.getElementById("value").value = value;
+              console.log("Data read from database.");
+            });
+        }
+      }
+
+      fin;
+    </script>
+  </head>
+  <body class="patterns pt1">
+    <center>
+      <h1 class="title">Retrieve text</h1>
+
+      <div class="keyDiv">
+        <label for="key" class="formLabel">Enter Key</label>
+        <input type="text" id="key" name="key" /><br /><br />
+      </div>
+
+      <button onclick="readFromDatabase()" class="myButton2">Retrieve</button>
+
+      <div class="valueDiv2">
+        <div class="valueFormDiv">
+          <textarea type="text" id="value" name="value"></textarea><br /><br />
+        </div>
+      </div>
+    </center>
+  </body>
+</html>
