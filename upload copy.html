@@ -6,7 +6,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <title>Retrieve | NOLOGIN</title>
+    <title>Upload | NOLOGIN</title>
     <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-database.js"></script>
     <script>
@@ -27,42 +27,50 @@
       firebase.initializeApp(firebaseConfig);
       var database = firebase.database();
 
-      function readFromDatabase() {
+      function writeToDatabase() {
         var key = document.getElementById("key").value;
+        var value = document.getElementById("value").value;
 
         if (key === "") alert("You must provide a key.");
+        else if (value === "") alert("You must provide a text to upload.");
+        else if (key === "" && value === "") alert("You must fill both forms.");
         else {
-          database
-            .ref(key)
-            .once("value")
-            .then(function (snapshot) {
-              var value = snapshot.val();
-              document.getElementById("value").value = value;
-              console.log("Data read from database.");
-            });
+          checkIfKeyExists(key, value);
         }
       }
 
-      fin;
+      function checkIfKeyExists(key, value) {
+        var ref = firebase.database().ref(key);
+        ref.once("value", function (snapshot) {
+          if (snapshot.exists()) {
+            console.log("Key already exists in the database.");
+            alert("This key is already in use. Please choose another key.");
+          } else {
+            alert("Data written to database.");
+            database.ref(key).set(value);
+          }
+        });
+      }
     </script>
   </head>
-  <body class="patterns pt1">
-    <center>
-      <h1 class="title">Retrieve text</h1>
+  <body class="inbody">
+    
+      <h1 class="title">Upload text</h1>
       <div class="devName">Developed By Aland Ameer Qader</div>
-
       <div class="keyDiv">
         <label for="key" class="formLabel">Enter Key</label>
-        <input type="text" id="key" name="key" /><br /><br />
+        <input type="text" id="key" name="key" />
       </div>
 
-      <button onclick="readFromDatabase()" class="myButton2">Retrieve</button>
-
-      <div class="valueDiv2">
-        <div class="valueFormDiv">
-          <textarea type="text" id="value" name="value"></textarea><br /><br />
+      <div class="valueDiv">
+        <div class="description">
+          <label for="value" class="formLabel">Enter text</label>
         </div>
-      </div>
-    </center>
+          <textarea type="text" id="value" name="value"></textarea>
+        </div>
+     
+
+      <button onclick="writeToDatabase()" class="myButton">Upload</button>
+   
   </body>
 </html>

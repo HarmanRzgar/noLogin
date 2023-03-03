@@ -1,24 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300&display=swap');
+
+  :root {
+  --bg-color: #3A98B9;
+  --header-font:'Oxygen', sans-serif;
+  --text-font: 'Roboto', sans-serif;
+  --fg-color: #EEEEEE;
+  --button-color: #E8D5C4;
+  --dark: #06283D;
+}
+
 body {
-  background-color: #9cc7ea;
-  color: white;
+  background-color: var(--bg-color) !important;
+  color: var(--fg-color);
   font-size: 16px;
+  font-family: var(--text-font);
 }
 
 .title {
-  font-size: 60px;
+  display: flex;
+  font-size: 5rem;
   top: 10;
-  font-family: "Roboto", "Oswald";
-  position: relative;
+  font-family: var(--header-font);
   right: 10;
-  font-family: "Arial Black", Gadget, sans-serif;
   letter-spacing: 2px;
   word-spacing: 2px;
-  color: #ffffff;
-  font-weight: 700;
+  color: var(--fg-color);
+  font-weight: 500;
   text-decoration: none solid rgb(68, 68, 68);
   font-style: normal;
   font-variant: small-caps;
   text-transform: uppercase;
+  justify-content: center;
 }
 
 #titleDiv {
@@ -49,19 +62,20 @@ body {
 }
 
 .description {
-  font-family: "Arial Black", Gadget, sans-serif;
+  font-family: var(--text-font);
   font-size: 25px;
   position: relative;
   top: -40px;
+  margin: auto;
+  width: 90%;
 }
-
+/*
 .upload {
   display: inline-block;
   outline: none;
   cursor: pointer;
   font-weight: 500;
   border: 1px solid transparent;
-  border-radius: 2px;
   height: 70px;
   width: 200px;
   line-height: 34px;
@@ -71,31 +85,61 @@ body {
   transition: background-color 0.2s ease-in-out 0s, opacity 0.2s ease-in-out 0s;
   padding: 0 18px;
   position: relative;
-  right: 50px;
+  
 }
 
 .upload:hover {
   color: #ffffff;
   background-color: #010404;
 }
-
+*/
 .buttons {
-  position: relative;
-  top: 100px;
+  border-radius: 3px;
+  color: var(--fg-color) !important;
+  background-color: var(--dark);
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  width: fit-content;
+  height: auto;
+  align-items: center;
+  font-family: var(--header-font);
+  margin: auto;
+  margin-top: 10%;
+ padding: 20px;
+ border: solid var(--dark) 3px;
 }
 
+.button {
+width: 7rem;
+height: 4rem;
+font-size: 1rem;
+background-color: #256D85;
+color: var(--fg-color);
+border: solid var(--fg-color) 3px;
+transition: transform ease 0.4s,color ease 0.2s, background-color ease 0.3s;
+animation: 15s infinite linear;
+border-radius: 4px;
+
+}
+
+.button:hover {
+  background-color: var(--fg-color);
+  color: var(--dark);
+  transform: translate(2px, -5px);
+}
+/*
 .retrieve {
   display: inline-block;
   outline: none;
   cursor: pointer;
   font-weight: 500;
   border: 1px solid transparent;
-  border-radius: 2px;
   height: 70px;
   line-height: 34px;
   font-size: 14px;
-  color: #ffffff;
-  background-color: #374a3a;
+  
+ 
   transition: background-color 0.2s ease-in-out 0s, opacity 0.2s ease-in-out 0s;
   padding: 0 18px;
   position: relative;
@@ -106,7 +150,7 @@ body {
 
 .retrieve:hover {
   color: #241c15;
-  background-color: #d9d7cd;
+  background-color: #1b1b1b;
 }
 
 .patterns {
@@ -143,15 +187,23 @@ body {
     transparent
   );
 }
+*/
 
 .foreground {
-  background: #f5eeee;
-  height: 260px;
-  width: 1000px;
-  position: relative;
+  background: var(--fg-color);
+  height: auto;
+  width: 80%;
   border-radius: 10px;
-  padding: 20px;
+  padding: 30px;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  justify-content: center;
+  border: solid var(--dark);
 }
+
+
 
 #key {
   border-radius: 5px;
@@ -175,99 +227,40 @@ body {
 }
 
 .keyDiv {
-  justify-content: center;
-  align-items: center;
+  
 }
 
 .formLabel {
-  font-family: "Arial Black", Gadget, sans-serif;
-  font-size: 20px;
+  font-size: 1rem;
   position: relative;
-  right: 70px;
-  top: 20px;
+  
 }
 
-.formLabel2 {
-  font-family: "Arial Black", Gadget, sans-serif;
-  font-size: 30px;
-  position: relative;
+.inbody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .valueDiv {
   position: relative;
-  top: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
 }
 
-.valueDiv2 {
-  position: relative;
-  top: 60px;
-}
 
 .valueLabelDiv {
   position: relative;
   bottom: 25px;
 }
 
-.myButton {
-  position: relative;
-  top: 100px;
-  display: inline-block;
-  outline: 0;
-  cursor: pointer;
-  border: 2px solid #000;
-  border-radius: 3px;
-  color: #fff;
-  background: #000;
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 28px;
-  width: 200px;
-  padding: 12px 20px;
-  text-align: center;
-  transition-duration: 0.15s;
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  top: 75px;
-}
-
-.myButton:hover {
-  color: #000;
-  background: rgb(255, 218, 87);
-}
-
-.myButton2 {
-  position: relative;
-  top: 100px;
-  display: inline-block;
-  outline: 0;
-  cursor: pointer;
-  border: 2px solid #000;
-  border-radius: 3px;
-  color: #fff;
-  background: #000;
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 28px;
-  width: 211px;
-  padding: 12px 20px;
-  text-align: center;
-  transition-duration: 0.15s;
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  top: 10px;
-  top: 20px;
-  left: 5px;
-}
-
-.myButton2:hover {
-  color: #000;
-  background: rgb(255, 218, 87);
-}
-
 textarea {
-  width: 1000px;
-  height: 500px;
+  width:90%;
+  height: 450px;
   padding: 10px;
   font-size: 25px;
   font-family: Arial, sans-serif;
@@ -299,4 +292,16 @@ textarea {
   font-style: normal;
   font-variant: small-caps;
   text-transform: uppercase;
+}
+
+@media only screen and (min-width: 1024px) {
+ .foreground {
+  width: 70%;
+ }
+
+.maintext {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 }
